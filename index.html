@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+   
+    :root{
+      --nav-mobile-bg: #000000;  
+      --nav-mobile-text: #ffffff;  
+      --nav-mobile-accent: #ff2b2b; 
+      --nav-desktop-text: inherit;
+    }
+
+    .skills-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .skills-list li { display: flex; align-items: center; gap: 10px; }
+    .skill-icon { width: 36px; height: 36px; display: inline-block; object-fit: contain; flex: 0 0 36px; }
+
+
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; position: relative; z-index: 10; }
+    .nav-list { list-style: none; margin: 0; padding: 0; display: flex; gap: 1rem; align-items: center; }
+    .nav-list li { margin: 0; }
+    .nav-list li a {
+      display: inline-block;
+      padding: 0.5rem 0.75rem;
+      text-decoration: none;
+      color: var(--nav-desktop-text);
+      transition: color .18s ease, background .18s ease, transform .12s ease;
+      position: relative;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    
+    .nav-list li a::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      height: 2px;
+      bottom: 6px;
+      background: var(--nav-mobile-accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .22s ease, opacity .18s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .nav-toggle { background: transparent; border: 0; cursor: pointer; padding: 8px; display: none; align-items: center; justify-content: center; color: var(--nav-mobile-text); }
+    .nav-toggle:focus { outline: 2px solid Highlight; outline-offset: 2px; }
+    .hamburger { display: inline-block; width: 22px; height: 2px; background: currentColor; position: relative; transition: background .2s ease; }
+    .hamburger::before, .hamburger::after { content: ''; position: absolute; left: 0; width: 22px; height: 2px; background: currentColor; transition: transform .25s ease, background .25s ease; }
+    .hamburger::before { top: -6px; }
+    .hamburger::after { top: 6px; }
+
+   
+    @media (max-width: 899px) {
+      .nav-toggle { display: flex; color: var(--nav-mobile-text); }
+
+      .nav-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--nav-mobile-bg);
+        color: var(--nav-mobile-text);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.5rem 0.75rem;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .36s cubic-bezier(.2,.9,.3,1), opacity .28s ease, background .2s ease;
+        opacity: 0;
+      }
+      .nav-list[data-visible="true"] {
+        max-height: 520px;
+        opacity: 1;
+      }
+
+      .nav-list li { width: 100%; }
+      .nav-list li a {
+        display: block;
+        width: 100%;
+        padding: 0.9rem 0.5rem;
+        color: var(--nav-mobile-text);
+      }
+
+      
+      .nav-list li a:hover,
+      .nav-list li a:focus {
+        color: var(--nav-mobile-accent);
+        background: rgba(255,43,43,0.06);
+        outline: none;
+      }
+      .nav-list li a:hover::after,
+      .nav-list li a:focus::after,
+      .nav-list li a:active::after {
+        transform: scaleX(1);
+        opacity: 1;
+      }
+
+      
+      .nav-list li a:active {
+        transform: translateY(1px);
+      }
+
+      
+      .nav-list, .nav-list * { color: var(--nav-mobile-text); }
+
+      
+      .nav-toggle[aria-expanded="true"] .hamburger { background: transparent; }
+      .nav-toggle[aria-expanded="true"] .hamburger::before { transform: rotate(45deg) translate(4px, 4px); background: var(--nav-mobile-accent); }
+      .nav-toggle[aria-expanded="true"] .hamburger::after { transform: rotate(-45deg) translate(4px, -4px); background: var(--nav-mobile-accent); }
+
+     
+      .nav-list li + li { border-top: 1px solid rgba(255,43,43,0.06); }
+      .nav-list li a { border-bottom: none; }
+    }
+
+    
+    @media (min-width: 900px) {
+      .nav-toggle { display: none; }
+      .nav-list {
+        position: static;
+        flex-direction: row !important;
+        align-items: center;
+        max-height: none !important;
+        opacity: 1 !important;
+        background: transparent;
+        box-shadow: none;
+      }
+      .nav-list li a { color: var(--nav-desktop-text); }
+
+     
+      .nav-list li a:hover::after,
+      .nav-list li a:focus::after {
+        transform: scaleX(1);
+        opacity: 1;
+      }
+      .nav-list li a:hover,
+      .nav-list li a:focus {
+        color: var(--nav-mobile-accent);
+      }
+    }
+
+  
+    @media (prefers-reduced-motion: reduce) {
+      .nav-list, .nav-list li a, .nav-toggle, .hamburger, .nav-list li a::after {
+        transition: none !important;
+      }
+    }
+
+   
+    @media (hover: none) and (pointer: coarse) {
+      .nav-list li a::after { display: none; }
+      .nav-list li a:hover { background: transparent; color: var(--nav-mobile-text); }
+    }
+
+   
+    header.hero .container { 
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.5rem 1rem;
+    }
+    
+    .hero-text { flex: 1 1 auto; min-width: 0; }
+    .hero-text .brand-name { margin: 0 0 .25rem 0; }
+    .hero-text .hero-sub { margin: 0 0 .5rem 0; }
+
+   
+    .hero-img { flex: 0 0 160px; display: flex; align-items: center; justify-content: center; }
+    .hero-img img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      border: 3px solid rgba(255,255,255,0.06);
+      background: #fff;
+      display: block;
+    }
+
+    @media (max-width: 700px) {
+      header.hero .container { flex-direction: column-reverse; text-align: center; gap: .75rem; }
+      .hero-img { margin-bottom: 0.5rem; }
+      .hero-img img { width: 120px; height: 120px; }
+      .hero-text { width: 100%; }
+    }
+
+    
+    .profile-toggle {
+      display: inline-flex;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 50%;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform .22s ease;
+    }
+    .profile-toggle:focus { outline: 2px solid rgba(255,43,43,0.6); outline-offset: 4px; }
+
+    .profile-toggle img {
+      display: block;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      transition: transform .36s cubic-bezier(.2,.9,.2,1), box-shadow .36s;
+    }
+
+    
+    @keyframes profile-pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+    .profile-pulse { animation: profile-pulse 2.4s ease-in-out infinite; }
+
+    
+    .site-content {
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(10px);
+      overflow: hidden;
+      transition: max-height .6s cubic-bezier(.2,.9,.3,1), opacity .36s ease, transform .36s ease;
+    }
+
+    
+    body.content-open .site-content {
+      max-height: 3000px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    
+    .site-content nav { transition-delay: .08s; }
+    .site-content main { transition-delay: .18s; }
+    .site-content footer { transition-delay: .28s; }
+
+    
+    body.content-open header.hero .container {
+      transform: translateY(-8px);
+      transition: transform .36s ease;
+    }
+
+    
+    body.content-open .profile-toggle img {
+      transform: scale(.98);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+
+    
+    @media (max-width: 700px) {
+      .profile-toggle img { width: 120px; height: 120px; }
+    }
+
+    
+    .profile-toggle.is-pressed img {
+      transform: scale(1.06); 
+      transition: transform .12s ease; 
+      box-shadow: 0 14px 42px rgba(0,0,0,0.45);
+    }
+
+    
+    body.content-open .profile-toggle.is-pressed img {
+      transform: scale(1.02);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .service-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 700px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* reveal animations */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .4s ease, transform .4s ease;
+    }
+    .reveal-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Added: styles for resume section */
+    .resume-viewer {
+      width: 100%;
+      height: 600px;
+      margin: 1.5rem 0;
+      border: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .resume-viewer iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .btn-download {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem 0;
+      background: var(--nav-mobile-accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background .2s ease;
+    }
+    .btn-download:hover {
+      background: rgba(255,43,43,0.8);
+    }
+  </style>
+  <meta name="description" content="Professional portfolio showcasing projects, skills, and services.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#0a66c2">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-text">
+        <h1 class="brand-name">Shree Aswin</h1>
+        <p class="hero-sub">I build things for the web</p>
+        <p class="roles" aria-hidden="false">
+          <span class="roles-inner">
+            <span>Web Developer</span>
+            <span>UI/UX Designer</span>
+            <span>JavaScript / Node.js</span>
+            <span>Automation & Python</span>
+          </span>
+        </p>
+      </div>
+
+      <div class="hero-img">
+        
+        <button class="profile-toggle profile-pulse" aria-expanded="false" aria-controls="site-content" title="Open site" type="button">
+          <img src="WhatsApp Image 2025-04-11 at 16.32.05_2ffe867a.jpg" alt="Profile photo">
+        </button>
+      
+      </div>
+    </div>
+  </header>
+
+  <div id="site-content" class="site-content" aria-hidden="true">
+    <!-- add reveal-item to nav -->
+    <nav class="reveal-item">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Toggle navigation">
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+      <ul id="nav-list" class="nav-list" data-visible="false">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <!-- Added: resume link -->
+        <li><a href="#resume">Resume</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <!-- mark each section as revealable -->
+      <section id="about" class="reveal-item">
+        <h2>About Me</h2>
+        <p>A brief introduction about yourself, your passions, and what you offer.</p>
+      </section>
+
+      <section id="skills" class="reveal-item">
+        <h2>Skills</h2>
+        <ul class="skills-list">
+          <li>
+            <img src="skills/html.svg" alt="HTML" class="skill-icon">
+            <strong>HTML:</strong> Semantic, accessible markup for modern web apps.
+          </li>
+          <li>
+            <img src="skills/css.svg" alt="CSS" class="skill-icon">
+            <strong>CSS:</strong> Responsive layouts, Flexbox, Grid, and animations.
+          </li>
+          <li>
+            <img src="skills/javascript.svg" alt="JavaScript" class="skill-icon">
+            <strong>JavaScript:</strong> Basic functions, operators, and control flow.
+          </li>
+          <li>
+            <img src="skills/sql.svg" alt="SQL" class="skill-icon">
+            <strong>SQL:</strong> Basic code of DDL, TCL, and DML.
+          </li>
+          <li>
+            <img src="skills/python.svg" alt="Python" class="skill-icon">
+            <strong>Python:</strong> Problem solving, data structures.
+          </li>
+          <li>
+            <img src="skills/java.svg" alt="Java" class="skill-icon">
+            <strong>Java:</strong> Functions, OOP concepts.
+          </li>
+        </ul>
+      </section>
+
+      <section id="services" class="reveal-item">
+        <h2>Services</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <h3>Web Development</h3>
+            <p>Front-end and back-end development using modern JavaScript frameworks, responsive layouts, and accessible markup.</p>
+          </div>
+          <div class="service-card">
+            <h3>UI/UX Design</h3>
+            <p>User-centered interfaces, wireframes, and high-fidelity prototypes focused on usability and conversion.</p>
+          </div>
+          <div class="service-card">
+            <h3>Website Maintenance</h3>
+            <p>Ongoing updates, performance optimization, backups, and security monitoring to keep sites healthy.</p>
+          </div>
+          <div class="service-card">
+            <h3>E‑commerce Development</h3>
+            <p>Store setup, payment integration, and conversion-focused product pages for online sales.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="reveal-item">
+        <h2>Projects</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <a href="#">
+              <img src="skills\download.jpg" alt="Code Review AI using Firebase Studio" class="project-thumb">
+              <h3>Code Review AI using Firebase Studio</h3>
+              <p>AI-powered code review platform leveraging Firebase Studio for real-time collaboration and feedback.</p>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="#">
+              <img src="skills\download (1).jpg" alt="ATM Simulation Basic Python" class="project-thumb">
+              <h3>ATM Simulation (Basic Python)</h3>
+              <p>A simple ATM simulation project built with Python, demonstrating basic banking operations and logic.</p>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="#">
+              <img src="skills\download (4).png" alt="n8n AI Agent" class="project-thumb">
+              <h3>n8n AI Agent</h3>
+              <p>Automated AI agent workflows using n8n for task automation, integration, and intelligent decision making.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- MOVED: Resume section now placed directly after Projects -->
+      <section id="resume" class="reveal-item">
+        <h2>Resume</h2>
+        <div class="resume-viewer" aria-label="Resume viewer">
+          <iframe src="output.pdf" title="Resume PDF" frameborder="0" loading="lazy"></iframe>
+        </div>
+        <p>
+          <a href="output.pdf" class="btn-download" target="_blank" rel="noopener">Open Resume in new tab</a>
+          &nbsp;|&nbsp;
+          <a href="output.pdf" download class="btn-download">Download Resume (PDF)</a>
+        </p>
+      </section>
+
+      <section id="contact" class="reveal-item">
+        <h2>Contact</h2>
+        <p>Email: aswin2005shree@gmail.com, LinkedIn: SHREE ASWIN</p>
+      </section>
+
+    </main>
+
+    <!-- footer reveal -->
+    <footer class="reveal-item">
+      <p>Thank you for visiting my portfolio!</p>
+    </footer>
+  </div>
+
+  <script>
+    // filepath: c:\Users\aswin\Desktop\protfolio\index.html
+    document.addEventListener('DOMContentLoaded', function () {
+    
+     
+      var profileBtn = document.querySelector('.profile-toggle');
+      var siteContent = document.getElementById('site-content');
+      var toggle = document.querySelector('.nav-toggle');
+      var navList = document.getElementById('nav-list');
+
+      
+      function updateNavVisibility() {
+        if (!siteContent) return;
+        var contentOpen = document.body.classList.contains('content-open');
+
+        if (!contentOpen) {
+          if (navList) navList.setAttribute('data-visible', 'false');
+          if (toggle) toggle.setAttribute('aria-expanded', 'false');
+          siteContent.setAttribute('aria-hidden', 'true');
+          return;
+        }
+
+       
+        if (window.innerWidth >= 900) {
+          if (navList) navList.setAttribute('data-visible', 'true');
+          if (toggle) toggle.setAttribute('aria-expanded', 'true');
+        } else {
+          
+          if (navList) navList.setAttribute('data-visible', 'false');
+          if (toggle) toggle.setAttribute('aria-expanded', 'false');
+        }
+        siteContent.setAttribute('aria-hidden', 'false');
+      }
+
+      
+      if (profileBtn) {
+        profileBtn.addEventListener('click', function () {
+          var open = document.body.classList.toggle('content-open');
+          profileBtn.setAttribute('aria-expanded', String(open));
+          
+          if (open) profileBtn.classList.remove('profile-pulse');
+
+          updateNavVisibility();
+
+          if (open) {
+            // reveal sequentially
+            revealSequential();
+            setTimeout(function () {
+              var firstLink = document.querySelector('#nav-list a, main a');
+              if (firstLink) firstLink.focus();
+            }, 420);
+          } else {
+            // hide sequentially
+            hideSequential();
+          }
+        });
+
+        // Escape handler: ensure hideSequential runs when closing
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && document.body.classList.contains('content-open')) {
+            document.body.classList.remove('content-open');
+            profileBtn.setAttribute('aria-expanded', 'false');
+            updateNavVisibility();
+            hideSequential();
+            profileBtn.focus();
+          }
+        });
+      }
+
+      
+      if (profileBtn) {
+        var pressStart = function (e) {
+          
+          if (e && e.pointerType === 'mouse' && e.button !== 0) return;
+          profileBtn.classList.add('is-pressed');
+        };
+        var pressEnd = function () {
+          profileBtn.classList.remove('is-pressed');
+        };
+
+        
+        profileBtn.addEventListener('pointerdown', pressStart);
+        document.addEventListener('pointerup', pressEnd);
+        profileBtn.addEventListener('pointercancel', pressEnd);
+        profileBtn.addEventListener('pointerleave', pressEnd);
+
+        
+        profileBtn.addEventListener('keydown', function (e) {
+          if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault(); 
+            pressStart(e);
+          }
+        });
+        profileBtn.addEventListener('keyup', function (e) {
+          if (e.key === ' ' || e.key === 'Enter') {
+            pressEnd();
+          }
+        });
+
+       
+        profileBtn.addEventListener('touchstart', pressStart, { passive: true });
+        profileBtn.addEventListener('touchend', function () { setTimeout(pressEnd, 90); }, { passive: true });
+
+       
+        var syncPressedState = function () {
+          if (!document.body.classList.contains('content-open')) {
+            profileBtn.classList.remove('is-pressed');
+          }
+        };
+       
+        var observer = new MutationObserver(syncPressedState);
+        observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+        window.addEventListener('resize', syncPressedState);
+      }
+
+     
+      if (toggle && navList) {
+        toggle.addEventListener('click', function () {
+          
+          if (!document.body.classList.contains('content-open')) return;
+          var isOpen = navList.getAttribute('data-visible') === 'true';
+          navList.setAttribute('data-visible', String(!isOpen));
+          toggle.setAttribute('aria-expanded', String(!isOpen));
+        });
+
+        
+        navList.addEventListener('click', function (e) {
+          if (e.target.tagName === 'A' && window.innerWidth < 900) {
+            navList.setAttribute('data-visible', 'false');
+            toggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        
+        window.addEventListener('resize', updateNavVisibility);
+
+       
+        updateNavVisibility();
+      } else if (navList) {
+       
+        updateNavVisibility();
+      }
+    });
+
+    // sequential reveal helpers
+    function revealSequential() {
+      const items = document.querySelectorAll('#site-content .reveal-item');
+      items.forEach((el, i) => {
+        el.classList.remove('visible'); // reset
+        // staggered reveal
+        setTimeout(() => el.classList.add('visible'), i * 110 + 80);
+      });
+    }
+    function hideSequential() {
+      const items = document.querySelectorAll('#site-content .reveal-item');
+      items.forEach((el, i) => {
+        // staggered hide (reverse order)
+        setTimeout(() => el.classList.remove('visible'), i * 50);
+      });
+    }
+  </script>
+
+</body>
+</html>
