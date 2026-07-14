@@ -1,0 +1,15 @@
+{
+  "name": "portfolio-site",
+  "version": "1.0.0",
+  "description": "Personal portfolio static site",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
