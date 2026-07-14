@@ -28,14 +28,13 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-brand-bg/80 backdrop-blur-md py-4 border-b border-brand-border' : 'bg-transparent py-8'}`}
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'glass py-4' : 'bg-transparent py-8'}`}
     >
       <div className="max-w-[1200px] mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="text-xl font-bold tracking-tighter text-brand-text hover:text-brand-muted transition-colors duration-300">
+        <a href="#" className="text-xl font-bold tracking-tighter text-white hover:text-brand-pop transition-all duration-300">
           Shree Aswin.
         </a>
 
-        {/* Desktop Nav */}
         <div className="hidden md:flex space-x-10">
           {navLinks.map((link, index) => (
             <motion.a 
@@ -44,23 +43,21 @@ export default function Navbar() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
-              className="text-sm font-medium text-brand-muted hover:text-brand-text transition-colors duration-300 relative"
+              className="text-sm font-medium text-white/50 hover:text-brand-pop transition-all duration-300 relative"
             >
               {link.name}
             </motion.a>
           ))}
         </div>
 
-        {/* Mobile Toggle */}
         <button 
-          className="md:hidden text-brand-muted hover:text-brand-text transition-colors"
+          className="md:hidden text-white hover:text-brand-pop transition-all"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Nav */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -68,7 +65,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-brand-bg/95 backdrop-blur-md border-b border-brand-border overflow-hidden"
+            className="md:hidden glass overflow-hidden"
           >
             <div className="px-6 py-6 flex flex-col space-y-6">
               {navLinks.map((link) => (
@@ -76,7 +73,7 @@ export default function Navbar() {
                   key={link.name} 
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-xl font-medium text-brand-muted hover:text-brand-text transition-colors"
+                  className="text-xl font-medium text-white/60 hover:text-brand-pop transition-all"
                 >
                   {link.name}
                 </a>

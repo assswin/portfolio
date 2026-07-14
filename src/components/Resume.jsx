@@ -9,7 +9,7 @@ export default function Resume() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="w-full aspect-[4/3] md:aspect-[16/10] bg-[#0b0b0b] rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative mb-8"
+        className="w-full aspect-[4/3] md:aspect-[16/10] glass-strong rounded-2xl overflow-hidden relative mb-8"
       >
         <iframe 
           src="/output.pdf" 
@@ -30,7 +30,7 @@ export default function Resume() {
           href="/output.pdf" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="flex items-center space-x-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-brand-text font-medium transition-all duration-300"
+          className="flex items-center space-x-2 px-6 py-3 glass rounded-full text-white/60 font-medium transition-all duration-300 glass-hover hover:text-brand-pop"
         >
           <ExternalLink size={18} />
           <span>Open in New Tab</span>
@@ -39,7 +39,7 @@ export default function Resume() {
         <a 
           href="/output.pdf" 
           download 
-          className="flex items-center space-x-2 px-6 py-3 bg-brand-accent hover:bg-brand-red text-brand-text font-medium rounded-full shadow-[0_0_20px_rgba(217,4,41,0.3)] transition-all duration-300 hover:-translate-y-1"
+          className="flex items-center space-x-2 px-6 py-3 bg-brand-pop hover:bg-indigo-400 text-white font-medium rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(99,102,241,0.4)]"
         >
           <Download size={18} />
           <span>Download PDF</span>
