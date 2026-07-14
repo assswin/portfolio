@@ -6,12 +6,15 @@ import Skills from './components/Skills';
 import Services from './components/Services';
 import Projects from './components/Projects';
 import Resume from './components/Resume';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
+import CustomCursor from './components/CustomCursor';
+import BackToTop from './components/BackToTop';
 
 function App() {
   return (
     <div className="bg-transparent font-sans text-brand-text">
+      <CustomCursor />
+      <BackToTop />
       <Navbar />
       
       <main>
@@ -35,10 +38,6 @@ function App() {
         
         <Section id="resume" title="Resume">
           <Resume />
-        </Section>
-        
-        <Section id="contact" title="Get in Touch">
-          <Contact />
         </Section>
       </main>
       

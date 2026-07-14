@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import InteractiveCard from './InteractiveCard';
 
 export default function Projects() {
   return (
@@ -17,23 +18,25 @@ export default function Projects() {
             className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 group`}
           >
             {/* Image Side */}
-            <div className="w-full md:w-3/5 overflow-hidden rounded-2xl glass glass-glow transition-all duration-300">
-              <motion.a 
-                href={project.link} 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block relative overflow-hidden"
-                whileHover="hover"
-              >
-                <motion.img 
-                  variants={{ hover: { scale: 1.05 } }}
-                  transition={{ duration: 0.7, ease: "easeOut" }}
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-[300px] md:h-[450px] object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f1a] via-transparent to-transparent z-10"></div>
-              </motion.a>
+            <div className="w-full md:w-3/5 overflow-hidden rounded-2xl glass glass-glow transition-all duration-300 perspective-[1000px]">
+              <InteractiveCard className="block relative overflow-hidden group">
+                <motion.a 
+                  href={project.link} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block relative overflow-hidden w-full h-full"
+                  whileHover="hover"
+                >
+                  <motion.img 
+                    variants={{ hover: { scale: 1.05 } }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-[300px] md:h-[450px] object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f1a] via-transparent to-transparent z-10"></div>
+                </motion.a>
+              </InteractiveCard>
             </div>
 
             {/* Content Side */}
@@ -52,10 +55,10 @@ export default function Projects() {
                 href={project.link} 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 text-white/60 font-medium hover:text-brand-pop transition-all w-fit pb-1"
+                className="inline-flex items-center space-x-2 text-white/60 font-medium hover:text-brand-pop transition-all w-fit pb-1 group/link"
               >
                 <span>View Case Study</span>
-                <ExternalLink size={18} />
+                <ExternalLink size={18} className="transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform duration-300" />
               </a>
             </div>
           </motion.div>

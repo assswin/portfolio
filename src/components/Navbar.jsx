@@ -19,8 +19,7 @@ export default function Navbar() {
     { name: 'Skills', href: '#skills' },
     { name: 'Services', href: '#services' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Resume', href: '#resume' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Resume', href: '#resume' }
   ];
 
   return (
@@ -61,24 +60,31 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden glass overflow-hidden"
+            initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+            animate={{ opacity: 1, backdropFilter: 'blur(40px)' }}
+            exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+            transition={{ duration: 0.4 }}
+            className="md:hidden fixed inset-0 z-40 bg-[#0f0f1a]/80 flex flex-col justify-center items-center"
           >
-            <div className="px-6 py-6 flex flex-col space-y-6">
-              {navLinks.map((link) => (
-                <a 
+            <div className="flex flex-col items-center space-y-8 w-full px-6">
+              {navLinks.map((link, index) => (
+                <motion.a 
                   key={link.name} 
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-xl font-medium text-white/60 hover:text-brand-pop transition-all"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  className="text-3xl font-medium text-white/80 hover:text-brand-pop hover:scale-110 transition-all duration-300"
                 >
                   {link.name}
-                </a>
+                </motion.a>
               ))}
             </div>
+            
+            {/* Decorative background orb for mobile menu */}
+            <div className="absolute bottom-20 right-10 w-40 h-40 bg-brand-pop/20 rounded-full blur-[80px] pointer-events-none"></div>
           </motion.div>
         )}
       </AnimatePresence>

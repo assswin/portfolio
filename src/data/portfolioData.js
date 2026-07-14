@@ -35,7 +35,8 @@ export const portfolioData = {
     { title: "n8n AI Agent", description: "Automated AI agent workflows using n8n for task automation, integration, and intelligent decision making.", image: project3Img, link: "#" }
   ],
   contact: {
-    email: "aswin2005shree@gmail.com",
+    email: "aswin200rshree@gmail.com",
+    phone: "93605337379",
     linkedin: "SHREE ASWIN"
   }
 };

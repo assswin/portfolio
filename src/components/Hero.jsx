@@ -17,10 +17,33 @@ export default function Hero() {
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       {/* Floating gradient orbs for glass effect */}
-      <motion.div style={{ y: backgroundY }} className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-blue-500/15 rounded-full blur-[100px]"></div>
-        <div className="absolute top-2/3 left-1/2 w-64 h-64 bg-purple-500/10 rounded-full blur-[80px]"></div>
+      <motion.div style={{ y: backgroundY }} className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <motion.div 
+          animate={{ 
+            x: [0, 100, 0],
+            y: [0, -50, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-[120px]"
+        />
+        <motion.div 
+          animate={{ 
+            x: [0, -80, 0],
+            y: [0, 100, 0],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-blue-500/15 rounded-full blur-[100px]"
+        />
+        <motion.div 
+          animate={{ 
+            x: [0, 50, -50, 0],
+            y: [0, 50, 0],
+          }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute top-2/3 left-1/2 w-64 h-64 bg-purple-500/10 rounded-full blur-[80px]"
+        />
       </motion.div>
 
       <div className="container max-w-[1200px] mx-auto px-6 z-10 flex flex-col md:flex-row items-center justify-between gap-16">
