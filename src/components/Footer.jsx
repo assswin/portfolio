@@ -1,4 +1,4 @@
-import { Mail, Phone } from 'lucide-react';
+import { Mail, Phone, Link } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Footer() {
@@ -12,6 +12,10 @@ export default function Footer() {
         <a href={`tel:${portfolioData.contact.phone}`} className="flex items-center gap-2 text-white/60 hover:text-brand-pop transition-colors">
           <Phone size={16} />
           <span className="text-sm font-medium">{portfolioData.contact.phone}</span>
+        </a>
+        <a href={portfolioData.contact.linkedinUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/60 hover:text-brand-pop transition-colors">
+          <Link size={16} />
+          <span className="text-sm font-medium">{portfolioData.contact.linkedin}</span>
         </a>
       </div>
       <p className="text-white/40 font-medium">Thank you for visiting my portfolio!</p>

@@ -37,6 +37,7 @@ export const portfolioData = {
   contact: {
     email: "aswin200rshree@gmail.com",
     phone: "93605337379",
-    linkedin: "SHREE ASWIN"
+    linkedin: "SHREE ASWIN",
+    linkedinUrl: "https://www.linkedin.com/in/shree-aswin-894771256"
   }
 };
