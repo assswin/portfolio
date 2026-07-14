@@ -13,7 +13,7 @@ export default function Services() {
           transition={{ duration: 0.5, delay: index * 0.1 }}
           className="group border-t border-brand-border pt-8 hover:border-white transition-colors duration-500"
         >
-          <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">
+          <h3 className="text-2xl font-bold text-brand-text mb-4 tracking-tight">
             {service.title}
           </h3>
           <p className="text-brand-muted leading-relaxed text-lg font-light">

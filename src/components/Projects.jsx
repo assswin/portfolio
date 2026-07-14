@@ -30,7 +30,7 @@ export default function Projects() {
                   alt={project.title} 
                   className="w-full h-[300px] md:h-[450px] object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                 />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-700"></div>
+                <div className="absolute inset-0 bg-brand-surface/40 group-hover:bg-transparent transition-colors duration-700"></div>
               </motion.a>
             </div>
 
@@ -39,7 +39,7 @@ export default function Projects() {
               <span className="text-brand-muted text-sm uppercase tracking-widest mb-4 font-semibold">
                 Case Study {String(index + 1).padStart(2, '0')}
               </span>
-              <h3 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+              <h3 className="text-3xl md:text-5xl font-bold text-brand-text mb-6 leading-tight">
                 {project.title}
               </h3>
               <p className="text-brand-muted text-lg leading-relaxed mb-8 font-light">
@@ -48,7 +48,7 @@ export default function Projects() {
               
               <a 
                 href={project.link} 
-                className="inline-flex items-center space-x-2 text-white font-medium hover:text-brand-muted transition-colors w-fit border-b border-transparent hover:border-brand-muted pb-1"
+                className="inline-flex items-center space-x-2 text-brand-text font-medium hover:text-brand-muted transition-colors w-fit border-b border-transparent hover:border-brand-muted pb-1"
               >
                 <span>View Case Study</span>
                 <ExternalLink size={18} />

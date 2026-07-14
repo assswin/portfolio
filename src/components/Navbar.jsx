@@ -31,7 +31,7 @@ export default function Navbar() {
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-brand-bg/80 backdrop-blur-md py-4 border-b border-brand-border' : 'bg-transparent py-8'}`}
     >
       <div className="max-w-[1200px] mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="text-xl font-bold tracking-tighter text-white hover:text-brand-muted transition-colors duration-300">
+        <a href="#" className="text-xl font-bold tracking-tighter text-brand-text hover:text-brand-muted transition-colors duration-300">
           Shree Aswin.
         </a>
 
@@ -44,7 +44,7 @@ export default function Navbar() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
-              className="text-sm font-medium text-brand-muted hover:text-white transition-colors duration-300 relative"
+              className="text-sm font-medium text-brand-muted hover:text-brand-text transition-colors duration-300 relative"
             >
               {link.name}
             </motion.a>
@@ -53,7 +53,7 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden text-brand-muted hover:text-white transition-colors"
+          className="md:hidden text-brand-muted hover:text-brand-text transition-colors"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -76,7 +76,7 @@ export default function Navbar() {
                   key={link.name} 
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-xl font-medium text-brand-muted hover:text-white transition-colors"
+                  className="text-xl font-medium text-brand-muted hover:text-brand-text transition-colors"
                 >
                   {link.name}
                 </a>

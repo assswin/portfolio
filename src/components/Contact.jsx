@@ -11,8 +11,8 @@ export default function Contact() {
         href={`mailto:${portfolioData.contact.email}`}
         className="flex items-center space-x-4 bg-transparent border border-brand-border hover:border-white rounded-full px-8 py-4 transition-all duration-300 group"
       >
-        <Mail className="text-brand-muted group-hover:text-white transition-colors" size={20} />
-        <span className="text-brand-muted group-hover:text-white font-medium">{portfolioData.contact.email}</span>
+        <Mail className="text-brand-muted group-hover:text-brand-text transition-colors" size={20} />
+        <span className="text-brand-muted group-hover:text-brand-text font-medium">{portfolioData.contact.email}</span>
       </motion.a>
       
       <motion.a 
@@ -21,8 +21,8 @@ export default function Contact() {
         href="#" // Add actual link here if available
         className="flex items-center space-x-4 bg-transparent border border-brand-border hover:border-white rounded-full px-8 py-4 transition-all duration-300 group"
       >
-        <Link className="text-brand-muted group-hover:text-white transition-colors" size={20} />
-        <span className="text-brand-muted group-hover:text-white font-medium">{portfolioData.contact.linkedin}</span>
+        <Link className="text-brand-muted group-hover:text-brand-text transition-colors" size={20} />
+        <span className="text-brand-muted group-hover:text-brand-text font-medium">{portfolioData.contact.linkedin}</span>
       </motion.a>
     </div>
   );

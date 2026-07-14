@@ -30,7 +30,7 @@ export default function Resume() {
           href="/output.pdf" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="flex items-center space-x-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-white font-medium transition-all duration-300"
+          className="flex items-center space-x-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-brand-text font-medium transition-all duration-300"
         >
           <ExternalLink size={18} />
           <span>Open in New Tab</span>
@@ -39,7 +39,7 @@ export default function Resume() {
         <a 
           href="/output.pdf" 
           download 
-          className="flex items-center space-x-2 px-6 py-3 bg-brand-accent hover:bg-brand-red text-white font-medium rounded-full shadow-[0_0_20px_rgba(217,4,41,0.3)] transition-all duration-300 hover:-translate-y-1"
+          className="flex items-center space-x-2 px-6 py-3 bg-brand-accent hover:bg-brand-red text-brand-text font-medium rounded-full shadow-[0_0_20px_rgba(217,4,41,0.3)] transition-all duration-300 hover:-translate-y-1"
         >
           <Download size={18} />
           <span>Download PDF</span>

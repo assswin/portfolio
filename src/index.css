@@ -1,22 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-bg: #050505;
-  --color-brand-accent: #ffffff;
-  --color-brand-muted: #888888;
-  --color-brand-surface: #111111;
-  --color-brand-border: rgba(255, 255, 255, 0.08);
+  --color-brand-bg: #fafafa;
+  --color-brand-accent: #0a66c2;
+  --color-brand-muted: #666666;
+  --color-brand-surface: #ffffff;
+  --color-brand-border: rgba(0, 0, 0, 0.08);
+  --color-brand-text: #111111;
 }
 
 @layer base {
   body {
-    @apply text-white antialiased min-h-screen bg-brand-bg m-0 p-0;
+    @apply text-brand-text antialiased min-h-screen bg-brand-bg m-0 p-0;
     font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     background-color: var(--color-brand-bg);
   }
 
   ::selection {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #fff;
+    background-color: rgba(10, 102, 194, 0.2);
+    color: var(--color-brand-text);
   }
 }

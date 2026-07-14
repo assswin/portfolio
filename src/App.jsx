@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="bg-transparent font-sans text-white">
+    <div className="bg-transparent font-sans text-brand-text">
       <Navbar />
       
       <main>

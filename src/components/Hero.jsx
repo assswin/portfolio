@@ -46,7 +46,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-6xl md:text-8xl font-black text-white mb-6 tracking-tighter leading-[1.1]"
+            className="text-6xl md:text-8xl font-black text-brand-text mb-6 tracking-tighter leading-[1.1]"
           >
             Shree <br/><span className="text-brand-muted">Aswin.</span>
           </motion.h1>
@@ -77,12 +77,12 @@ export default function Hero() {
                 alt="Shree Aswin" 
                 className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 grayscale hover:grayscale-0"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-surface via-brand-surface/50 to-transparent"></div>
             </div>
             
             {/* Content Layer (pops out in 3D due to InteractiveCard's translateZ) */}
             <div className="relative z-10 flex flex-col gap-2">
-              <h3 className="text-3xl font-bold text-white tracking-tight">Interactive</h3>
+              <h3 className="text-3xl font-bold text-brand-text tracking-tight">Interactive</h3>
               <p className="text-brand-muted text-sm uppercase tracking-widest">Hover to interact</p>
             </div>
           </InteractiveCard>

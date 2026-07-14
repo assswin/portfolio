@@ -12,7 +12,7 @@ export default function Section({ id, title, children, className = '' }) {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-bold text-brand-text mb-4 tracking-tight">
               {title}
               <span className="text-brand-accent">.</span>
             </h2>
